@@ -1,0 +1,30 @@
+CREATE TABLE jogos (
+    id_jogos INT PRIMARY KEY,
+    nome_jogos VARCHAR(50) NOT NULL,
+    nome_estilo_de_jogo VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE jogadores (
+    id_jogadores INT PRIMARY KEY,
+    nome_jogadores VARCHAR(50) NOT NULL,
+    jogos_id INT,
+    CONSTRAINT fk_jogos FOREIGN KEY (jogos_id)
+    REFERENCES jogos (id_jogos)
+);
+
+
+INSERT INTO jogos (id_jogos, nome_jogos, nome_estilo_de_jogo) VALUES (1, 'assassins creed', 'RPG-AÇÃO');
+INSERT INTO jogos (id_jogos, nome_jogos, nome_estilo_de_jogo) VALUES (2, 'red dead redemption 2', 'AÇÃO-AVENTURA');
+INSERT INTO jogos (id_jogos, nome_jogos, nome_estilo_de_jogo) VALUES (3, 'far cry', 'FPS');
+
+
+INSERT INTO jogadores (id_jogadores, nome_jogadores, jogos_id) VALUES (1, 'flavio', 3);
+INSERT INTO jogadores (id_jogadores, nome_jogadores, jogos_id) VALUES (2, 'miguel', 1);
+INSERT INTO jogadores (id_jogadores, nome_jogadores, jogos_id) VALUES (3, 'dudu', 2);
+INSERT INTO jogadores (id_jogadores, nome_jogadores, jogos_id) VALUES (4, 'diego', 2);
+INSERT INTO jogadores (id_jogadores, nome_jogadores, jogos_id) VALUES (5, 'passos', 3);
+
+SELECT * FROM jogos
+
+SELECT * FROM jogadores
+
