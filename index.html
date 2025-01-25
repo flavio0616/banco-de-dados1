@@ -28,3 +28,21 @@ SELECT * FROM jogos
 
 SELECT * FROM jogadores
 
+SELECT nome_jogadores, nome_jogos from jogadores
+INNER JOIN jogos
+ON jogos.id_jogos = jogadores.jogos_id;
+
+
+delimeter $$
+
+CREATE TRIGGER after_insert_jogadores
+AFTER INSERT ON jogadores
+FOR EACH ROW
+BEGIN
+UPDATE jogadores
+SET nome_jogadores = UPDATE(NEW.nome_jogadores)
+WHERE id_jogadores = NEW.id_jogadores;
+END;
+
+INSERT INTO jogadores (id_jogadores, nome_jogadores, jogos_id) VALUES (6, 'carlos', 1);
+SELECT * FROM jogadores;
